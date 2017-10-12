@@ -20,11 +20,11 @@ public class SharePrefrenseCache implements ICache {
 
 	@Override
 	public void saveCache(String key, String cache) {
-
+		SharePrefrenseUtil.getInstance().init(mContext).save(key,cache);
 	}
 
 	@Override
 	public String loadCache(String key) {
-		return null;
+		return (String) SharePrefrenseUtil.getInstance().init(mContext).get(key,"");
 	}
 }

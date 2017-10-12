@@ -42,8 +42,10 @@ public class SharePrefrenseUtil {
 		return mSharePrefrenseUtil;
 	}
 
-	public void init(Context context){
-		mPreferences = PreferenceManager.getDefaultSharedPreferences(context.getApplicationContext());
+	public SharePrefrenseUtil init(Context context){
+		if(mPreferences == null)
+			mPreferences = PreferenceManager.getDefaultSharedPreferences(context.getApplicationContext());
+		return this;
 	}
 
 	public void save(String key,Object value){
