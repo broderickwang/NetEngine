@@ -49,6 +49,9 @@ public class SharePrefrenseUtil {
 	public void save(String key,Object value){
 		if(mEditor == null)
 			mEditor = mPreferences.edit();
+		if(mPreferences == null){
+			throw new IllegalArgumentException("Please call the init()!");
+		}
 		String type = value.getClass().getSimpleName();
 		if("String".equals(type)){
 			mEditor.putString(key,(String)value);
