@@ -43,7 +43,7 @@ public class OkHttpEngine implements IHttpEngine {
 	}
 
 	@Override
-	public void get(String url, final Map<String,Object> params,Map<String,Object> headers) {
+	public void get(final String url, final Map<String,Object> params, Map<String,Object> headers) {
 		mRequest = addHeaders(headers)
 				.url(combGetParams(url,params).build())
 				.get()
@@ -59,6 +59,9 @@ public class OkHttpEngine implements IHttpEngine {
 			@Override
 			public void onResponse(Call call, Response response) throws IOException {
 				String rst = response.body().string();
+				if(mCache != null){
+					mCache.saveCache(url,rst);
+				}
 				mCallback.onSuccess(rst);
 			}
 		});

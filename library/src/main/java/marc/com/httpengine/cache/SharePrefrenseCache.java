@@ -1,5 +1,7 @@
 package marc.com.httpengine.cache;
 
+import android.content.Context;
+
 /**
  * Created by 王成达
  * Date: 2017/9/15
@@ -9,6 +11,13 @@ package marc.com.httpengine.cache;
  * Email:wangchengda1990@gmail.com
  **/
 public class SharePrefrenseCache implements ICache {
+
+	private Context mContext;
+
+	public SharePrefrenseCache(Context context) {
+		this.mContext = context;
+	}
+
 	@Override
 	public void saveCache(String key, String cache) {
 
